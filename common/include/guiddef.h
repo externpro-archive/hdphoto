@@ -29,7 +29,7 @@ typedef struct _GUID {
 #endif
 
 #ifndef FAR
-#if defined(_WIN32) || defined(__ANSI__)
+#if defined(_WIN32) || defined(__ANSI__) || defined(__GNUC__)
 #define FAR
 #else
 #define FAR _far

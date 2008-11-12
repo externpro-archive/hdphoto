@@ -6,8 +6,8 @@
 //*@@@---@@@@******************************************************************
 #pragma once
 
-#include <windowsmediaphoto.h>
-#include <wmspecstring.h>
+#include "windowsmediaphoto.h"
+#include "wmspecstring.h"
 
 //================================================================
 // Container

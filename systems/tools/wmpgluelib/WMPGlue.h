@@ -10,8 +10,8 @@
 extern "C" {
 #endif
 
-#include <WMPMeta.h>
-#include <guiddef.h>
+#include "WMPMeta.h"
+#include "guiddef.h"
 
 //================================================================
 #define WMP_SDK_VERSION 0x0101

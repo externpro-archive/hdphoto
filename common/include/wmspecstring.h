@@ -17,7 +17,7 @@
 #if _MSC_VER
 #pragma once
 #endif
-#include <wmsal.h>  
+#include "wmsal.h"  
 
 #ifndef __SAL_H_FULL_VER
 #define __SAL_H_FULL_VER 140050727
@@ -262,7 +262,7 @@ __inner_assume_bound_dec
 #ifdef  __cplusplus
 }
 #endif
-#include <wmspecstrings_adt.h>
+#include "wmspecstrings_adt.h"
 #ifdef _PREFIX_
 /**************************************************************************
 * Defintion of __pfx_assume and __pfx_assert. Thse should be the only
@@ -288,7 +288,7 @@ void __pfx_assume(int, const char *);
 * Must avoid redfinitions of macros to workaround rc.exe issues. 
 ***************************************************************************/
 #ifndef RC_INVOKED
-#include <wmspecstrings_strict.h>
+#include "wmspecstrings_strict.h"
 #endif /* RC_INVOKED */
 #endif /* #ifndef SPECSTRINGS_H */
 
