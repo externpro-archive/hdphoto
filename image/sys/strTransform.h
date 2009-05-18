@@ -76,3 +76,4 @@ static void VERIFY_REPORT()
 #endif // VERIFY_16BIT
 
 #endif // WMI_STRTRANSFORM_H
+

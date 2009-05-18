@@ -582,7 +582,7 @@ ERR ParseTifDEValue(
             break;
 
         case TIF_tagStripOffsets:
-            Call(WMPAlloc(&pID->TIF.uStripOffsets, sizeof(*pID->TIF.uStripOffsets) * uCount));
+            Call(WMPAlloc((void**)&pID->TIF.uStripOffsets, sizeof(*pID->TIF.uStripOffsets) * uCount));
             Call(GetTifULong(pWS, offPos, pID->TIF.fLittleEndian, &uValue0));
             Call(GetTifULongArray(pWS, uValue0, uCount, pID->TIF.fLittleEndian, pID->TIF.uStripOffsets));
             break;
@@ -597,7 +597,7 @@ ERR ParseTifDEValue(
             break;
 
         case TIF_tagStripByteCounts:
-            Call(WMPAlloc(&pID->TIF.uStripByteCounts, sizeof(*pID->TIF.uStripByteCounts) * uCount));
+            Call(WMPAlloc((void**)&pID->TIF.uStripByteCounts, sizeof(*pID->TIF.uStripByteCounts) * uCount));
             Call(GetTifULong(pWS, offPos, pID->TIF.fLittleEndian, &uValue0));
             Call(GetTifULongArray(pWS, uValue0, uCount, pID->TIF.fLittleEndian, pID->TIF.uStripByteCounts));
             break;
@@ -697,11 +697,11 @@ ERR ParseTifHeader(
     // Header
     Call(pWS->Read(pWS, szSig, 2));
     offPos += 2;
-    if (szSig == strstr(szSig, "II"))
+    if ((char*)szSig == strstr(szSig, "II"))
     {
         pID->TIF.fLittleEndian = !FALSE;
     }
-    else if (szSig == strstr(szSig, "MM"))
+    else if ((char*)szSig == strstr(szSig, "MM"))
     {
         pID->TIF.fLittleEndian = FALSE;
     }
@@ -828,8 +828,8 @@ ERR PKImageDecode_Release_TIF(PKImageDecode** ppID)
 
     PKImageDecode *pID = *ppID;
 
-    Call(WMPFree(&pID->TIF.uStripOffsets));
-    Call(WMPFree(&pID->TIF.uStripByteCounts));
+    Call(WMPFree((void**)&pID->TIF.uStripOffsets));
+    Call(WMPFree((void**)&pID->TIF.uStripByteCounts));
 
     Call(PKImageDecode_Release(ppID));
 

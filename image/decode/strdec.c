@@ -447,8 +447,6 @@ static _FORCEINLINE float pixel2float(PixelI _h, const char _c, const unsigned c
 
     I32 s, iTempH, m, e, lmshift = (1 << _lm);
 
-    assert (_c <= 127);
-
     iTempH = (I32) _h ;
     s = (iTempH >> 31);
     iTempH = (iTempH ^ s) - s; // abs(iTempH)
@@ -3135,7 +3133,7 @@ Int ReadWMIHeader(
 // 0
     /** signature **/
     Call(pWS->Read(pWS, szMS, sizeof(szMS)));
-    FailIf(szMS != strstr(szMS, "WMPHOTO"), WMP_errUnsupportedFormat);
+    FailIf((char*)szMS != strstr(szMS, "WMPHOTO"), WMP_errUnsupportedFormat);
     //================================
     Call(attach_SB(pSB, pWS));
 

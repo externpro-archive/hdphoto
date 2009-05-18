@@ -9,7 +9,9 @@
 
 #include <WMPGlue.h>
 
+#ifdef _MSC_VER
 #pragma pack(push, 1)
+#endif
 
 #define BI_RGB 0
 #define BI_BITFIELDS 3
@@ -55,8 +57,9 @@ typedef struct tagBITMAPINFOHEADEREXT{
     U32 uD;
 } BITMAPINFOHEADEREXT, *PBITMAPINFOHEADEREXT;
 
-
+#ifdef _MSC_VER
 #pragma pack(pop)
+#endif
 
 //================================================================
 // PKImageEncode_BMP
@@ -232,7 +235,7 @@ ERR ParseBMPHeader(
     U32 i = 0;
 
     Call(pWS->Read(pWS, &bmpFH, sizeof(bmpFH)));
-    FailIf(bmpFH.szBM != strstr(bmpFH.szBM, "BM"), WMP_errUnsupportedFormat);
+    FailIf((char*)bmpFH.szBM != strstr(bmpFH.szBM, "BM"), WMP_errUnsupportedFormat);
 
     Call(pWS->Read(pWS, &bmpIH, sizeof(bmpIH)));
 

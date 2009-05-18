@@ -178,19 +178,19 @@ ERR ParsePNMHeader(
 
     //================================
     Call(GetLineSkipPound(pWS, line, sizeof2(line)));
-    if (line == strstr(line, "P5"))
+    if ((char*)line == strstr(line, "P5"))
     {
         idxChannel = 0;
         Call(GetLineSkipPound(pWS, line, sizeof2(line)));
         FailIf(2 != sscanf(line, "%u %u", &width, &height), WMP_errUnsupportedFormat);
     }
-    else if(line == strstr(line, "P6"))
+    else if((char*)line == strstr(line, "P6"))
     {
         idxChannel = 1;
         Call(GetLineSkipPound(pWS, line, sizeof2(line)));
         FailIf(2 != sscanf(line, "%u %u", &width, &height), WMP_errUnsupportedFormat);
     } 
-    else if(line == strstr(line, "PF")) 
+    else if((char*)line == strstr(line, "PF")) 
     {
         idxChannel = 2;
         Call(GetLineSkipPound(pWS, line, sizeof2(line)));

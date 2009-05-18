@@ -244,19 +244,8 @@ ERR GetImageDecodeIID(const char* szExt, const PKIID** ppIID);
 
 
 //================================================================
-#ifdef __ANSI__
-#define PKFactory           struct tagPKFactory
-#define PKCodecFactory      struct tagPKCodecFactory
-#define PKImageDecode       struct tagPKImageDecode
-#define PKImageEncode       struct tagPKImageEncode
-#define PKFormatConverter   struct tagPKFormatConverter
-#else // __ANSI__
-typedef struct tagPKFactory PKFactory;
-typedef struct tagPKCodecFactory PKCodecFactory;
-typedef struct tagPKImageDecode PKImageDecode;
-typedef struct tagPKImageEncode PKImageEncode;
-typedef struct tagPKFormatConverter PKFormatConverter;
-#endif // __ANSI__
+struct tagPKImageDecode;
+struct tagPKFormatConverter;
 //================================================================
 typedef struct tagPKStream
 {
@@ -276,10 +265,7 @@ typedef struct tagPKFactory
     ERR (*CreateStreamFromFilename)(struct WMPStream**, const char*, const char*);
     ERR (*CreateStreamFromMemory)(struct WMPStream**, void*, size_t);
 
-    ERR (*Release)(PKFactory**);
-#ifdef __ANSI__
-#undef PKFactory
-#endif // __ANSI__
+    ERR (*Release)(struct tagPKFactory**);
 } PKFactory;
 
 //----------------------------------------------------------------
@@ -293,13 +279,10 @@ EXTERN_C ERR PKCreateFactory(PKFactory**, U32);
 typedef struct tagPKCodecFactory
 {
     ERR (*CreateCodec)(const PKIID*, void**);
-    ERR (*CreateDecoderFromFile)(const char*, PKImageDecode**);
-    ERR (*CreateFormatConverter)(PKFormatConverter**);
+    ERR (*CreateDecoderFromFile)(const char*, struct tagPKImageDecode**);
+    ERR (*CreateFormatConverter)(struct tagPKFormatConverter**);
 
-    ERR (*Release)(PKCodecFactory**);
-#ifdef __ANSI__
-#undef PKCodecFactory
-#endif // __ANSI__
+    ERR (*Release)(struct tagPKCodecFactory**);
 } PKCodecFactory;
 
 //----------------------------------------------------------------
@@ -312,21 +295,21 @@ EXTERN_C ERR PKCreateCodecFactory(PKCodecFactory**, U32);
 typedef struct tagPKImageEncode
 {
     //ERR (*GetPixelFormat)(MILPixelFormat*));
-    ERR (*Initialize)(PKImageEncode*, struct WMPStream*, void*, size_t);
-    ERR (*Terminate)(PKImageEncode*);
+    ERR (*Initialize)(struct tagPKImageEncode*, struct WMPStream*, void*, size_t);
+    ERR (*Terminate)(struct tagPKImageEncode*);
 
-    ERR (*SetPixelFormat)(PKImageEncode*, PKPixelFormatGUID);
-    ERR (*SetSize)(PKImageEncode*, I32, I32);
-    ERR (*SetResolution)(PKImageEncode*, Float, Float);
+    ERR (*SetPixelFormat)(struct tagPKImageEncode*, PKPixelFormatGUID);
+    ERR (*SetSize)(struct tagPKImageEncode*, I32, I32);
+    ERR (*SetResolution)(struct tagPKImageEncode*, Float, Float);
 
-    ERR (*WritePixels)(PKImageEncode*, U32, U8*, U32);
-    ERR (*WriteSource)(PKImageEncode*, PKFormatConverter*, PKRect*);
+    ERR (*WritePixels)(struct tagPKImageEncode*, U32, U8*, U32);
+    ERR (*WriteSource)(struct tagPKImageEncode*, struct tagPKFormatConverter*, PKRect*);
 
-    ERR (*Transcode)(PKImageEncode*, PKImageDecode*, CWMTranscodingParam*);
+    ERR (*Transcode)(struct tagPKImageEncode*, struct tagPKImageDecode*, CWMTranscodingParam*);
 
-    ERR (*CreateNewFrame)(PKImageEncode*, void*, size_t);
+    ERR (*CreateNewFrame)(struct tagPKImageEncode*, void*, size_t);
 
-    ERR (*Release)(PKImageEncode**);
+    ERR (*Release)(struct tagPKImageEncode**);
 
     struct WMPStream* pStream;
     size_t offStart;
@@ -346,7 +329,7 @@ typedef struct tagPKImageEncode
     size_t offPixel;
     size_t cbPixel;
 
-	Bool bWMP;//for the encoder in decoding
+    Bool bWMP;//for the encoder in decoding
 
     union
     {
@@ -367,9 +350,6 @@ typedef struct tagPKImageEncode
             Long nCbAlpha;
         } WMP;
     };
-#ifdef __ANSI__
-#undef PKImageEncode
-#endif // __ANSI__
 } PKImageEncode;
 
 //----------------------------------------------------------------
@@ -396,20 +376,20 @@ ERR PKImageEncode_Create(PKImageEncode** ppIE);
 //================================================================
 typedef struct tagPKImageDecode
 {
-    ERR (*Initialize)(PKImageDecode*, struct WMPStream* pStream);
+    ERR (*Initialize)(struct tagPKImageDecode*, struct WMPStream* pStream);
 
-    ERR (*GetPixelFormat)(PKImageDecode*, PKPixelFormatGUID*);
-    ERR (*GetSize)(PKImageDecode*, I32*, I32*);
-    ERR (*GetResolution)(PKImageDecode*, Float*, Float*);
+    ERR (*GetPixelFormat)(struct tagPKImageDecode*, PKPixelFormatGUID*);
+    ERR (*GetSize)(struct tagPKImageDecode*, I32*, I32*);
+    ERR (*GetResolution)(struct tagPKImageDecode*, Float*, Float*);
 
-    ERR (*GetRawStream)(PKImageDecode*, struct WMPStream**);
+    ERR (*GetRawStream)(struct tagPKImageDecode*, struct WMPStream**);
 
-    ERR (*Copy)(PKImageDecode*, const PKRect*, U8*, U32);
+    ERR (*Copy)(struct tagPKImageDecode*, const PKRect*, U8*, U32);
 
-    ERR (*GetFrameCount)(PKImageDecode*, U32*);
-    ERR (*SelectFrame)(PKImageDecode*, U32);
+    ERR (*GetFrameCount)(struct tagPKImageDecode*, U32*);
+    ERR (*SelectFrame)(struct tagPKImageDecode*, U32);
 
-    ERR (*Release)(PKImageDecode**);
+    ERR (*Release)(struct tagPKImageDecode**);
 
     struct WMPStream* pStream;
     Bool fStreamOwner;
@@ -476,9 +456,6 @@ typedef struct tagPKImageDecode
             Bool fLittleEndian;
         } TIF;
     };
-#ifdef __ANSI__
-#undef PKImageDecode
-#endif // __ANSI__
 } PKImageDecode;
 
 //----------------------------------------------------------------
@@ -506,23 +483,20 @@ ERR PKCodecFactory_CreateDecoderFromFile(const char* szFilename, PKImageDecode**
 //================================================================
 typedef struct tagPKFormatConverter
 {
-    ERR (*Initialize)(PKFormatConverter*, PKImageDecode*, char *pExt, PKPixelFormatGUID);
+    ERR (*Initialize)(struct tagPKFormatConverter*, PKImageDecode*, char *pExt, PKPixelFormatGUID);
 
-    ERR (*GetPixelFormat)(PKFormatConverter*, PKPixelFormatGUID*);
-    ERR (*GetSourcePixelFormat)(PKFormatConverter*, PKPixelFormatGUID*);
-    ERR (*GetSize)(PKFormatConverter*, I32*, I32*);
-    ERR (*GetResolution)(PKFormatConverter*, Float*, Float*);
+    ERR (*GetPixelFormat)(struct tagPKFormatConverter*, PKPixelFormatGUID*);
+    ERR (*GetSourcePixelFormat)(struct tagPKFormatConverter*, PKPixelFormatGUID*);
+    ERR (*GetSize)(struct tagPKFormatConverter*, I32*, I32*);
+    ERR (*GetResolution)(struct tagPKFormatConverter*, Float*, Float*);
 
-    ERR (*Copy)(PKFormatConverter*, const PKRect*, U8*, U32);
-    ERR (*Convert)(PKFormatConverter*, const PKRect*, U8*, U32);
+    ERR (*Copy)(struct tagPKFormatConverter*, const PKRect*, U8*, U32);
+    ERR (*Convert)(struct tagPKFormatConverter*, const PKRect*, U8*, U32);
 
-    ERR (*Release)(PKFormatConverter**);
+    ERR (*Release)(struct tagPKFormatConverter**);
 
     PKImageDecode* pDecoder;
     PKPixelFormatGUID enPixelFormat;
-#ifdef __ANSI__
-#undef PKFormatConverter
-#endif // __ANSI__
 } PKFormatConverter;
 
 //----------------------------------------------------------------

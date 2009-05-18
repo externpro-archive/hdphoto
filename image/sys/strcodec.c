@@ -470,7 +470,7 @@ ERR CloseWS_List(struct WMPStream** ppWS)
             pBuf = pNext;
             pNext = (U8 *)(((void **)(pBuf))[0]);
 //printf ("delete buffer    %x\n", pBuf);
-            Call(WMPFree(&pBuf));
+            Call(WMPFree((void **)&pBuf));
         }
     }
     Call(WMPFree((void**)ppWS));

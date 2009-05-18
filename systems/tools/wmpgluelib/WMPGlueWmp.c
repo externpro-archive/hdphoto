@@ -439,7 +439,7 @@ ERR PKImageEncode_Release_WMP(
     PKImageEncode *pIE = *ppIE;
     pIE->pStream->Close(&pIE->pStream);
 
-    Call(PKFree(ppIE));
+    Call(PKFree((void**)ppIE));
 
 Cleanup:
     return err;
@@ -495,7 +495,7 @@ ERR ParsePFDEntry(
         {
             unsigned char *pGuid = (unsigned char *) &pID->guidPixFormat;
             /** following code is endian-agnostic **/
-            Call(GetULong(pWS, uValue, (unsigned long *)pGuid));
+            Call(GetULong(pWS, uValue, (U32*)pGuid));
             Call(GetUShort(pWS, uValue + 4, (unsigned short *)(pGuid + 4)));
             Call(GetUShort(pWS, uValue + 6, (unsigned short *)(pGuid + 6)));
             Call(pWS->Read(pWS, pGuid + 8, 8));

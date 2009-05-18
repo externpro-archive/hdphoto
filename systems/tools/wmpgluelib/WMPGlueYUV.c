@@ -10,8 +10,10 @@
 
 #include <WMPGlue.h>
 
+#ifdef _MSC_VER
 #pragma pack(push, 1)
 #pragma pack(pop)
+#endif
 
 //================================================================
 // PKImageEncode_Iyuv

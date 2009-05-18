@@ -256,7 +256,7 @@ ERR PKFormatConverter_Release(PKFormatConverter** ppFC)
 {
     ERR err = WMP_errSuccess;
 
-    Call(PKFree(ppFC));
+    Call(PKFree((void**)ppFC));
 
 Cleanup:
     return err;
