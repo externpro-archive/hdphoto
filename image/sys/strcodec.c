@@ -662,7 +662,10 @@ U32 _byteswap_ulong(U32 bits)
 U32 load4BE(void* pv)
 {
 #ifdef _BIG__ENDIAN_
-    return (*(U32*)pv);
+    // avoid unaligned memory access - can't just return (*(U32*)pv)
+    U32  v;
+    memcpy(&v, pv, sizeof(v));
+    return v;
 #else // _BIG__ENDIAN_
 #ifdef _M_IA64
     U32  v;

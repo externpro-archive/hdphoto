@@ -47,6 +47,9 @@ else
          -I$(SRCDIR)/systems/tools/wmpmetalib
   LIB := $(OUTPUT_DIR)/libhdphoto$(BLD_LTR).a
   CPPFLAGS += -D__ANSI__
+  ifeq ($(ENDIAN),BIG_ENDIAN_CODE)
+  CPPFLAGS += -D_BIG__ENDIAN_
+  endif
   USER_SPECIALS := $(INC)
 
   # Common
