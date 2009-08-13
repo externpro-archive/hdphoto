@@ -46,7 +46,7 @@ else
          -I$(SRCDIR)/systems/tools/wmpgluelib \
          -I$(SRCDIR)/systems/tools/wmpmetalib
   LIB := $(OUTPUT_DIR)/libhdphoto$(BLD_LTR).a
-  CPPFLAGS += -D__ANSI__
+  CPPFLAGS += -D__ANSI__ -DDISABLE_PERF_MEASUREMENT
   ifeq ($(ENDIAN),BIG_ENDIAN_CODE)
   CPPFLAGS += -D_BIG__ENDIAN_
   endif

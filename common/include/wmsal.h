@@ -265,7 +265,9 @@ nothing, and do not affect the compiled code.
      in the negated form __notnull or the possibly null form __maybenull.
     */
 
+# ifndef __GNUC__
     #define __null                  __declspec("SAL_null")
+# endif
     #define __notnull               __declspec("SAL_notnull")
     #define __maybenull             __declspec("SAL_maybenull")
 
@@ -449,7 +451,9 @@ nothing, and do not affect the compiled code.
     #define __inner_fallthrough                 __FallThrough();
 
 #else
+# ifndef __GNUC__
     #define __null
+# endif
     #define __notnull
     #define __maybenull
     #define __readonly
@@ -505,7 +509,9 @@ buffer, use the table in the buffer annotations section.
 #define __in_nz                                                 __in
 #define __in_ecount_nz(size)                                    __in_ecount(size)
 #define __in_bcount_nz(size)                                    __in_bcount(size)
+#ifndef __GNUC__
 #define __out                                                   __ecount(1) __post __valid __refparam
+#endif
 #define __out_ecount(size)                                      __ecount(size) __post __valid __refparam
 #define __out_bcount(size)                                      __bcount(size) __post __valid __refparam
 #define __out_ecount_part(size,length)                          __out_ecount(size) __post __elem_readableTo(length)
@@ -548,7 +554,9 @@ buffer, use the table in the buffer annotations section.
 #define __in_nz_opt                                             __in_opt                                     
 #define __in_ecount_nz_opt(size)                                __in_ecount_opt(size)                         
 #define __in_bcount_nz_opt(size)                                __in_bcount_opt(size)                         
+#ifndef __GNUC__
 #define __out_opt                                               __out                                       __exceptthat __maybenull
+#endif
 #define __out_ecount_opt(size)                                  __out_ecount(size)                          __exceptthat __maybenull
 #define __out_bcount_opt(size)                                  __out_bcount(size)                          __exceptthat __maybenull
 #define __out_ecount_part_opt(size,length)                      __out_ecount_part(size,length)              __exceptthat __maybenull
