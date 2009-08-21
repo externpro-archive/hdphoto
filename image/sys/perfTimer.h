@@ -57,6 +57,9 @@ typedef struct PERFTIMERRESULTS
         // Presence of zero-time intervals may indicate insufficient clock precision
 } PERFTIMERRESULTS;
 
+// Forward declaration
+struct PERFTIMERSTATE;
+
 #define NANOSECONDS_PER_SECOND  1000000000
 
 
