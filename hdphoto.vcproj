@@ -80,6 +80,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="REM pushd works for case where $(SolutionDir) is a UNC path (cd doesn&apos;t work)&#x0D;&#x0A;pushd $(SolutionDir)&#x0D;&#x0A;if exist include\hdphoto goto theend&#x0D;&#x0A;mkdir include\hdphoto&#x0D;&#x0A;pushd include\hdphoto&#x0D;&#x0A;echo &quot;Copying file(s) into include\hdphoto&quot;&#x0D;&#x0A;REM triple quotes for case where $(ProjectDir) is a UNC path with spaces&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)common\include\*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)image\sys\windowsmedia*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)systems\tools\wmpgluelib\*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)systems\tools\wmpmetalib\*.h&quot;&quot;&quot;&#x0D;&#x0A;popd&#x0D;&#x0A;:theend&#x0D;&#x0A;popd"
 			/>
 		</Configuration>
 		<Configuration
@@ -145,6 +146,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="REM pushd works for case where $(SolutionDir) is a UNC path (cd doesn&apos;t work)&#x0D;&#x0A;pushd $(SolutionDir)&#x0D;&#x0A;if exist include\hdphoto goto theend&#x0D;&#x0A;mkdir include\hdphoto&#x0D;&#x0A;pushd include\hdphoto&#x0D;&#x0A;echo &quot;Copying file(s) into include\hdphoto&quot;&#x0D;&#x0A;REM triple quotes for case where $(ProjectDir) is a UNC path with spaces&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)common\include\*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)image\sys\windowsmedia*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)systems\tools\wmpgluelib\*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)systems\tools\wmpmetalib\*.h&quot;&quot;&quot;&#x0D;&#x0A;popd&#x0D;&#x0A;:theend&#x0D;&#x0A;popd"
 			/>
 		</Configuration>
 		<Configuration
@@ -207,6 +209,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="REM pushd works for case where $(SolutionDir) is a UNC path (cd doesn&apos;t work)&#x0D;&#x0A;pushd $(SolutionDir)&#x0D;&#x0A;if exist include\hdphoto goto theend&#x0D;&#x0A;mkdir include\hdphoto&#x0D;&#x0A;pushd include\hdphoto&#x0D;&#x0A;echo &quot;Copying file(s) into include\hdphoto&quot;&#x0D;&#x0A;REM triple quotes for case where $(ProjectDir) is a UNC path with spaces&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)common\include\*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)image\sys\windowsmedia*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)systems\tools\wmpgluelib\*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)systems\tools\wmpmetalib\*.h&quot;&quot;&quot;&#x0D;&#x0A;popd&#x0D;&#x0A;:theend&#x0D;&#x0A;popd"
 			/>
 		</Configuration>
 		<Configuration
@@ -270,6 +273,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="REM pushd works for case where $(SolutionDir) is a UNC path (cd doesn&apos;t work)&#x0D;&#x0A;pushd $(SolutionDir)&#x0D;&#x0A;if exist include\hdphoto goto theend&#x0D;&#x0A;mkdir include\hdphoto&#x0D;&#x0A;pushd include\hdphoto&#x0D;&#x0A;echo &quot;Copying file(s) into include\hdphoto&quot;&#x0D;&#x0A;REM triple quotes for case where $(ProjectDir) is a UNC path with spaces&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)common\include\*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)image\sys\windowsmedia*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)systems\tools\wmpgluelib\*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)systems\tools\wmpmetalib\*.h&quot;&quot;&quot;&#x0D;&#x0A;popd&#x0D;&#x0A;:theend&#x0D;&#x0A;popd"
 			/>
 		</Configuration>
 		<Configuration
@@ -331,6 +335,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="REM pushd works for case where $(SolutionDir) is a UNC path (cd doesn&apos;t work)&#x0D;&#x0A;pushd $(SolutionDir)&#x0D;&#x0A;if exist include\hdphoto goto theend&#x0D;&#x0A;mkdir include\hdphoto&#x0D;&#x0A;pushd include\hdphoto&#x0D;&#x0A;echo &quot;Copying file(s) into include\hdphoto&quot;&#x0D;&#x0A;REM triple quotes for case where $(ProjectDir) is a UNC path with spaces&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)common\include\*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)image\sys\windowsmedia*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)systems\tools\wmpgluelib\*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)systems\tools\wmpmetalib\*.h&quot;&quot;&quot;&#x0D;&#x0A;popd&#x0D;&#x0A;:theend&#x0D;&#x0A;popd"
 			/>
 		</Configuration>
 		<Configuration
@@ -393,6 +398,7 @@
 			/>
 			<Tool
 				Name="VCPostBuildEventTool"
+				CommandLine="REM pushd works for case where $(SolutionDir) is a UNC path (cd doesn&apos;t work)&#x0D;&#x0A;pushd $(SolutionDir)&#x0D;&#x0A;if exist include\hdphoto goto theend&#x0D;&#x0A;mkdir include\hdphoto&#x0D;&#x0A;pushd include\hdphoto&#x0D;&#x0A;echo &quot;Copying file(s) into include\hdphoto&quot;&#x0D;&#x0A;REM triple quotes for case where $(ProjectDir) is a UNC path with spaces&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)common\include\*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)image\sys\windowsmedia*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)systems\tools\wmpgluelib\*.h&quot;&quot;&quot;&#x0D;&#x0A;copy &quot;&quot;&quot;$(ProjectDir)systems\tools\wmpmetalib\*.h&quot;&quot;&quot;&#x0D;&#x0A;popd&#x0D;&#x0A;:theend&#x0D;&#x0A;popd"
 			/>
 		</Configuration>
 	</Configurations>
