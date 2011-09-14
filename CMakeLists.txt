@@ -6,24 +6,24 @@ include_directories(
   ${CMAKE_CURRENT_SOURCE_DIR}/image/sys
   ${CMAKE_CURRENT_SOURCE_DIR}/systems/tools/wmpgluelib
   ${CMAKE_CURRENT_SOURCE_DIR}/systems/tools/wmpmetalib
-)
+  )
 if(WIN32)
   include_directories(
     ${CMAKE_CURRENT_SOURCE_DIR}/image/x86
     ${CMAKE_CURRENT_SOURCE_DIR}/network/client/debughlp/memtrace
-  )
+    )
 endif()
 #######################################
 # preprocessor
 if(MSVC)
   add_definitions(
     -D_CRT_SECURE_NO_WARNINGS
-  )
+    )
 elseif(CMAKE_COMPILER_IS_GNUCXX)
   add_definitions(
     -D__ANSI__
     -DDISABLE_PERF_MEASUREMENT
-  )
+    )
 endif()
 #######################################
 # library sources
@@ -42,7 +42,7 @@ set(Common_srcs
   image/sys/strTransform.h
   image/sys/windowsmediaphoto.h
   image/sys/xplatform_image.h
-)
+  )
 source_group(Common FILES ${Common_srcs})
 list(APPEND ${lib_name}_libsrcs ${Common_srcs})
 ###################
@@ -57,7 +57,7 @@ set(Decode_srcs
   image/decode/strInvTransform.c
   image/decode/strPredQuantDec.c
   image/decode/WMPTranscode.c
-)
+  )
 source_group(Decode FILES ${Decode_srcs})
 list(APPEND ${lib_name}_libsrcs ${Decode_srcs})
 ###################
@@ -69,7 +69,7 @@ set(Encode_srcs
   image/encode/strenc.c
   image/encode/strFwdTransform.c
   image/encode/strPredQuantEnc.c
-)
+  )
 source_group(Encode FILES ${Encode_srcs})
 list(APPEND ${lib_name}_libsrcs ${Encode_srcs})
 ###################
@@ -80,7 +80,7 @@ set(Include_srcs
   common/include/wmspecstring.h
   common/include/wmspecstrings_adt.h
   common/include/wmspecstrings_strict.h
-)
+  )
 source_group(Include FILES ${Include_srcs})
 list(APPEND ${lib_name}_libsrcs ${Include_srcs})
 ###################
@@ -96,7 +96,7 @@ if(WIN32)
     network/client/debughlp/memtrace/regtrace.h
     network/client/debughlp/memtrace/sysheap.cpp
     network/client/debughlp/memtrace/sysMalloc.cpp
-  )
+    )
   source_group(Memtrace FILES ${Memtrace_srcs})
   list(APPEND ${lib_name}_libsrcs ${Memtrace_srcs})
 endif()
@@ -112,7 +112,7 @@ set(WMPGlue_srcs
   systems/tools/wmpgluelib/WMPGlueTif.c
   systems/tools/wmpgluelib/WMPGlueWmp.c
   systems/tools/wmpgluelib/WMPGlueYUV.c
-)
+  )
 source_group(WMPGlue FILES ${WMPGlue_srcs})
 list(APPEND ${lib_name}_libsrcs ${WMPGlue_srcs})
 ###################
@@ -120,7 +120,7 @@ list(APPEND ${lib_name}_libsrcs ${WMPGlue_srcs})
 set(WMPMeta_srcs
   systems/tools/wmpmetalib/WMPMeta.c
   systems/tools/wmpmetalib/WMPMeta.h
-)
+  )
 source_group(WMPMeta FILES ${WMPMeta_srcs})
 list(APPEND ${lib_name}_libsrcs ${WMPMeta_srcs})
 #######################################
