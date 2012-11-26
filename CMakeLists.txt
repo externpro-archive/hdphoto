@@ -1,3 +1,6 @@
+cmake_minimum_required(VERSION 2.8.5)
+project(hdphoto)
+include(flags OPTIONAL)
 set(lib_name hdphoto)
 #######################################
 # additional include directories
@@ -126,3 +129,13 @@ list(APPEND ${lib_name}_libsrcs ${WMPMeta_srcs})
 #######################################
 # library
 add_library(${lib_name} STATIC ${${lib_name}_libsrcs})
+#######################################
+# install
+set(lib_hdrs
+  "${Include_srcs}"
+  image/sys/windowsmediaphoto.h
+  systems/tools/wmpgluelib/WMPGlue.h
+  systems/tools/wmpmetalib/WMPMeta.h
+  )
+install(TARGETS ${lib_name} DESTINATION lib${NUMBITS})
+install(FILES ${lib_hdrs} DESTINATION include/hdphoto)
