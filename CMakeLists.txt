@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 2.8.5)
+cmake_minimum_required(VERSION 3.0)
 project(hdphoto)
 include(flags OPTIONAL)
 set(lib_name hdphoto)
@@ -22,7 +22,7 @@ if(MSVC)
   add_definitions(
     -D_CRT_SECURE_NO_WARNINGS
     )
-elseif(CMAKE_COMPILER_IS_GNUCXX OR "${CMAKE_CXX_COMPILER_ID}" STREQUAL "Clang")
+elseif(CMAKE_COMPILER_IS_GNUCXX OR "${CMAKE_CXX_COMPILER_ID}" MATCHES "Clang")
   add_definitions(
     -D__ANSI__
     -DDISABLE_PERF_MEASUREMENT
