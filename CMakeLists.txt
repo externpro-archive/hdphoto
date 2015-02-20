@@ -137,5 +137,11 @@ set(lib_hdrs
   systems/tools/wmpgluelib/WMPGlue.h
   systems/tools/wmpmetalib/WMPMeta.h
   )
-install(TARGETS ${lib_name} DESTINATION lib${NUMBITS})
+install(TARGETS ${lib_name} EXPORT ${PROJECT_NAME}-targets
+  RUNTIME DESTINATION bin${NUMBITS}
+  LIBRARY DESTINATION lib${NUMBITS}
+  ARCHIVE DESTINATION lib${NUMBITS}
+  )
 install(FILES ${lib_hdrs} DESTINATION include/hdphoto)
+install(FILES usexp-${PROJECT_NAME}-config.cmake DESTINATION share/cmake)
+install(EXPORT ${PROJECT_NAME}-targets DESTINATION lib${NUMBITS}/cmake)
