@@ -143,5 +143,4 @@ install(TARGETS ${lib_name} EXPORT ${PROJECT_NAME}-targets
   ARCHIVE DESTINATION lib${NUMBITS}
   )
 install(FILES ${lib_hdrs} DESTINATION include/hdphoto)
-install(FILES usexp-${PROJECT_NAME}-config.cmake DESTINATION share/cmake)
 install(EXPORT ${PROJECT_NAME}-targets DESTINATION lib${NUMBITS}/cmake)
