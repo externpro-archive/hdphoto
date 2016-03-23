@@ -130,6 +130,13 @@ list(APPEND ${lib_name}_libsrcs ${WMPMeta_srcs})
 # library
 add_library(${lib_name} STATIC ${${lib_name}_libsrcs})
 #######################################
+# executables
+set(exes WmpDecApp WmpEncApp)
+foreach(exe ${exes})
+  add_executable(${exe} systems/tools/samplecodenew/wmpencdecoder/${exe}.c)
+  target_link_libraries(${exe} ${lib_name})
+endforeach()
+#######################################
 # install
 set(lib_hdrs
   "${Include_srcs}"
