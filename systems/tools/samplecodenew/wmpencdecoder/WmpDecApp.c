@@ -396,7 +396,7 @@ ERR WmpDecAppCreateEncoderFromExt(
     Call(GetImageEncodeIID(szExt, &pIID));
 
     // Create encoder
-    Call(PKCodecFactory_CreateCodec(pIID, ppIE));
+    Call(PKCodecFactory_CreateCodec(pIID, (void**)ppIE));
 
 Cleanup:
     return err;
